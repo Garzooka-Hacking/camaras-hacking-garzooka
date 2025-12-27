@@ -1,16 +1,19 @@
-# camaras-hacking-garzooka 🛡️🐍⚡
+#camaras-hacking-garzooka 🛡️🐍⚡
 
-Advanced Traffic Surveillance Dashboard rebranded for **GARZOOKA HACKING**.
+Panel de vigilancia de tráfico avanzado rebautizado como **GARZOOKA HACKING**.
 
-## Features
-- **HLS.js Integration**: Direct playback of traffic camera streams.
-- **Secure Overlays**: Dynamic overlays to obscure source branding and location text.
-- **Glassmorphism UI**: Premium dark-mode interface with green hacking aesthetics.
-- **Fullscreen Mode**: Enhanced fullscreen support with persistent branding.
-- **Kennedy Park Integration**: Including external surveillance from SkylineWebcams.
+## Características
+- **Integración HLS.js**: reproducción directa de transmisiones de cámaras de tráfico.
+- **Superposiciones seguras**: superposiciones dinámicas para ocultar la marca de origen y el texto de ubicación.
+- **Interfaz de usuario Glassmorphism**: interfaz premium en modo oscuro con estética de piratería ecológica.
+- **Modo de pantalla completa**: soporte de pantalla completa mejorado con marca persistente.
+- **Integración de Kennedy Park**: Incluye vigilancia externa de SkylineWebcams.
 
-## Setup
-Simply open `index.html` in any modern web browser or host it on a static site provider.
+## Configuración
+Simplemente abra `index.html` en cualquier navegador web moderno o alójelo en un proveedor de sitio estático.
 
-## Disclaimer
-This project is for educational and surveillance monitoring purposes only.
+## Descargo de responsabilidad
+Este proyecto es sólo para fines educativos y de seguimiento de vigilancia.
+
+
+Link: https://garzooka-hacking.github.io/camaras-hacking-garzooka/
