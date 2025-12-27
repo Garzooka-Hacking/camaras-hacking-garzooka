@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600\u0026display=swap');
+
+:root {
+  --bg-color: #0d0d0d;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --accent-color: #00ff41;
+  /* Hacking Green */
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100-vh;
+  padding: 2rem;
+  background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0d0d0d 100%);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  background: linear-gradient(to right, #fff, var(--accent-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Grid Layout */
+.camera-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .camera-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Camera Card */
+.camera-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.camera-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(218, 41, 28, 0.3);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio */
+  background: #000;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  object-fit: cover;
+}
+
+.camera-info {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.camera-details h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.camera-details p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-icon {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* Fullscreen focus */
+.camera-card:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  border-radius: 0;
+}
+
+.camera-card:fullscreen .video-container {
+  height: 100vh;
+  width: 100vw;
+  padding-top: 0;
+}
+
+.camera-card:fullscreen .video-container video {
+  object-fit: cover;
+  /* Required to ensure video edges meet screen corners where overlays are */
+}
+
+/* Loading state */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  z-index: 5;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.brand-overlay {
+  position: absolute;
+  bottom: 0;
+  /* Align perfectly with bottom */
+  right: 0;
+  /* Align perfectly with right */
+  width: 70px;
+  height: 70px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  border-top: 2px solid var(--accent-color);
+  border-left: 2px solid var(--accent-color);
+  overflow: hidden;
+}
+
+.brand-overlay img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+.brand-overlay.xl-text {
+  width: 160px;
+  /* Fine-tuned to 160px to cover the badge without being 'too big' */
+  height: 85px;
+  min-width: 160px;
+}
+
+.status-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 8px 15px;
+  background: #000;
+  /* Solid background */
+  border-bottom: 2px solid var(--accent-color);
+  border-right: 2px solid var(--accent-color);
+  z-index: 999;
+  /* Ensure it's on top of everything */
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+.status-overlay.xl-text {
+  font-size: 1.1rem;
+  padding: 12px 25px;
+  background: #000;
+  min-width: 450px;
+  box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2);
+}
+
+.status-overlay.xl-text .glitch-text {
+  font-weight: 700;
+}
+
+.location-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 6px 12px;
+  background: #000;
+  border-top: 2px solid var(--accent-color);
+  border-right: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  font-family: monospace;
+  font-size: 0.7rem;
+  z-index: 999;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.location-overlay.xl-text {
+  font-size: 1rem;
+  padding: 10px 20px;
+  background: #000;
+  min-width: 350px;
+}
+
+.glitch-text {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
