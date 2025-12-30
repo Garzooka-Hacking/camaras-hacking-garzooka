@@ -6,7 +6,7 @@ const cameraData = [
   { slug: "panamericana", name: "Puente Atocongo", location: "Panamericana Sur", m3u8: "https://live.smartechlatam.online/claro/panamericana/index.m3u8" },
   { slug: "miraflores", name: "Av. Del Ejército", location: "Miraflores", m3u8: "https://live.smartechlatam.online/claro/miraflores/index.m3u8" },
   { slug: "surquillo", name: "Av. Rep. de Panamá", location: "Surquillo", m3u8: "https://live.smartechlatam.online/claro/republicapanama/index.m3u8" },
-  { slug: "lince", name: "Av. Paseo de la Rep.", location: "Lince", m3u8: "https://live.smartechlatam.online/claro/lince/index.m3u8" },
+  { slug: "lince", name: "Av. Paseo de la Rep.", location: "Lince", m3u8: "https://live.smartechlatam.online/claro/paseodelarepublica/index.m3u8" },
   { slug: "ejercito", name: "Av. Del Ejército", location: "Magdalena", m3u8: "https://live.smartechlatam.online/claro/ejercito/index.m3u8" },
   { slug: "jesusmaria", name: "Av. Faustino Sanchez", location: "Jesús María", m3u8: "https://live.smartechlatam.online/claro/avfaustinocarrion/index.m3u8" },
   { slug: "lamarina", name: "Av. La Marina", location: "Pueblo Libre", m3u8: "https://live.smartechlatam.online/claro/lamarina/index.m3u8" },
