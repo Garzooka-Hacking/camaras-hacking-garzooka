@@ -22,6 +22,20 @@
         <!-- Cameras will be injected here by script.js -->
     </main>
 
+    <div id="traffic-monitor" class="traffic-widget">
+        <div class="widget-header">
+            <span>TRÁFICO_RED</span>
+            <div class="status-dot"></div>
+        </div>
+        <div class="graph-container">
+            <canvas id="trafficGraph"></canvas>
+        </div>
+        <div class="stats-row">
+            <span id="traffic-value">Traf: 0 KB</span>
+            <span class="box-stat">USUARIOS: <span id="user-count">0</span></span>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 

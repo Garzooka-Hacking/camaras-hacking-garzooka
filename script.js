@@ -135,3 +135,68 @@ document.addEventListener('DOMContentLoaded', () => {
     initHls(index);
   });
 });
+
+/* Traffic Widget Logic */
+(function () {
+  const canvas = document.getElementById('trafficGraph');
+  const ctx = canvas.getContext('2d');
+  const trafficValue = document.getElementById('traffic-value');
+  const userCount = document.getElementById('user-count');
+
+  // Resume audio context on interaction if needed (not here but good practice)
+
+  // Resize canvas
+  function resizeCanvas() {
+    canvas.width = canvas.parentElement.offsetWidth;
+    canvas.height = canvas.parentElement.offsetHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  // Data points
+  const maxPoints = 50;
+  let data = new Array(maxPoints).fill(0).map(() => Math.random() * 0.5); // Start with low noise
+
+  function updateGraph() {
+    // Shift data
+    data.shift();
+    // Add new random point (simulating network traffic spikes)
+    let newValue = data[data.length - 1] + (Math.random() - 0.5) * 0.2;
+    if (newValue < 0) newValue = 0;
+    if (newValue > 1) newValue = 1;
+    // Occasional spike
+    if (Math.random() > 0.95) newValue = Math.random() * 0.8 + 0.2;
+
+    data.push(newValue);
+
+    // Draw
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.beginPath();
+    ctx.strokeStyle = '#00ff41';
+    ctx.lineWidth = 2;
+
+    const step = canvas.width / (maxPoints - 1);
+
+    for (let i = 0; i < maxPoints; i++) {
+      const x = i * step;
+      const y = canvas.height - (data[i] * canvas.height);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Update Text Stats
+    // Random KB value between 120 and 800 KB
+    const kb = Math.floor(Math.random() * (800 - 120) + 120);
+    trafficValue.innerText = `Traf: ${kb} KB`;
+
+    // Random users occasionally
+    if (Math.random() > 0.98) {
+      userCount.innerText = Math.floor(Math.random() * 3);
+    }
+  }
+
+  // Update @ 15fps for "monitor" feel
+  setInterval(updateGraph, 100);
+})();
