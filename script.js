@@ -11,7 +11,7 @@ const cameraData = [
   { slug: "jesusmaria", name: "Av. Faustino Sanchez", location: "Jesús María", m3u8: "https://live.smartechlatam.online/claro/avfaustinocarrion/index.m3u8" },
   { slug: "lamarina", name: "Av. La Marina", location: "Pueblo Libre", m3u8: "https://live.smartechlatam.online/claro/lamarina/index.m3u8" },
   { slug: "rimac", name: "Av. Prol. Tacna", location: "Rímac", m3u8: "https://live.smartechlatam.online/claro/prolongaciontacna/index.m3u8" },
-  { slug: "kennedy", name: "Parque Kennedy", location: "Miraflores", isExternal: true, url: "https://www.skylinewebcams.com/es/webcam/peru/lima/lima/miraflores-kennedy-park.html", thumbnail: "https://embed.skylinewebcams.com/img/4570.jpg" }
+
 ];
 
 function createCameraCard(camera, index) {
