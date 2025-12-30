@@ -11,7 +11,7 @@ const cameraData = [
   { slug: "jesusmaria", name: "Av. Faustino Sanchez", location: "Jesús María", m3u8: "https://live.smartechlatam.online/claro/avfaustinocarrion/index.m3u8" },
   { slug: "lamarina", name: "Av. La Marina", location: "Pueblo Libre", m3u8: "https://live.smartechlatam.online/claro/lamarina/index.m3u8" },
   { slug: "rimac", name: "Av. Prol. Tacna", location: "Rímac", m3u8: "https://live.smartechlatam.online/claro/prolongaciontacna/index.m3u8" },
-  { slug: "kennedy", name: "Parque Kennedy", location: "Miraflores", m3u8: "https://hd-auth.skylinewebcams.com/live.m3u8?a=09q0osufd75jb9tgr9lpg3da32" }
+  { slug: "kennedy", name: "Parque Kennedy", location: "Miraflores", m3u8: "https://hd-auth.skylinewebcams.com/live.m3u8?a=3bcq0sos7skgnaoc6dtb8puul2" }
 ];
 
 function createCameraCard(camera, index) {
