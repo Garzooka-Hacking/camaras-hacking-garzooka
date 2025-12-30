@@ -11,7 +11,7 @@ const cameraData = [
   { slug: "jesusmaria", name: "Av. Faustino Sanchez", location: "Jesús María", m3u8: "https://live.smartechlatam.online/claro/avfaustinocarrion/index.m3u8" },
   { slug: "lamarina", name: "Av. La Marina", location: "Pueblo Libre", m3u8: "https://live.smartechlatam.online/claro/lamarina/index.m3u8" },
   { slug: "rimac", name: "Av. Prol. Tacna", location: "Rímac", m3u8: "https://live.smartechlatam.online/claro/prolongaciontacna/index.m3u8" },
-  { slug: "kennedy", name: "Parque Kennedy", location: "Miraflores", m3u8: "https://hd-auth.skylinewebcams.com/live.m3u8?a=3bcq0sos7skgnaoc6dtb8puul2" }
+  { slug: "kennedy", name: "Parque Kennedy", location: "Miraflores", isExternal: true, url: "https://www.skylinewebcams.com/es/webcam/peru/lima/lima/miraflores-kennedy-park.html", thumbnail: "https://embed.skylinewebcams.com/img/4570.jpg" }
 ];
 
 function createCameraCard(camera, index) {
@@ -21,12 +21,28 @@ function createCameraCard(camera, index) {
   const isLarge = ["javierprado", "derby", "angamos"].includes(camera.slug);
   const xlClass = isLarge ? "xl-text" : "";
 
-  card.innerHTML = `
-    <div class="video-container">
-      <div class="loading-overlay" id="loading-${index}">
+  let videoContent = '';
+  if (camera.isExternal) {
+    videoContent = `
+        <a href="${camera.url}" target="_blank" style="display:block; width:100%; height:100%; text-decoration:none;">
+            <img src="${camera.thumbnail}" alt="${camera.name}" style="width:100%; height:100%; object-fit:cover; opacity: 0.8;">
+            <div class="loading-overlay" style="background: rgba(0,0,0,0.5);">
+                <span class="glitch-text" style="color: var(--accent-color); border: 1px solid var(--accent-color); padding: 5px 10px;">CLICK TO VIEW STREAM</span>
+            </div>
+        </a>
+      `;
+  } else {
+    videoContent = `
+       <div class="loading-overlay" id="loading-${index}">
         <div class="spinner"></div>
       </div>
       <video id="video-${index}" autoplay muted playsinline crossorigin="anonymous"></video>
+      `;
+  }
+
+  card.innerHTML = `
+    <div class="video-container">
+      ${videoContent}
       <div class="status-overlay ${xlClass}">
         <span class="glitch-text">NETWORK: GARZOOKA_SECURE_NODE_${index + 1}</span>
       </div>
@@ -51,12 +67,12 @@ function createCameraCard(camera, index) {
             <line x1="3" y1="21" x2="10" y2="14"></line>
           </svg>
         </button>
-        <button class="btn-icon" onclick="refreshCamera(${index})" title="Recargar">
+        ${!camera.isExternal ? `<button class="btn-icon" onclick="refreshCamera(${index})" title="Recargar">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M23 4v6h-6"></path>
             <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
           </svg>
-        </button>
+        </button>` : ''}
       </div>
     </div>
   `;
@@ -64,6 +80,8 @@ function createCameraCard(camera, index) {
 }
 
 function initHls(index) {
+  if (cameraData[index].isExternal) return; // Skip HLS init for external links
+
   const video = document.getElementById(`video-${index}`);
   const m3u8Url = cameraData[index].m3u8;
   const loading = document.getElementById(`loading-${index}`);
