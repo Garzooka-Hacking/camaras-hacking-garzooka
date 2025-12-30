@@ -1,5 +1,5 @@
 const cameraData = [
-  { slug: "brasil", name: "Av. Brasil", location: "Magdalena/Breña", m3u8: "https://live.smartechlatam.online/claro/brasil/index.m3u8" },
+  { slug: "brasil", name: "Av. Brasil", location: "Magdalena/Breña", m3u8: "https://live.smartechlatam.online/claro/brasilconjavierprado/index.m3u8" },
   { slug: "javierprado", name: "Av. Javier Prado Este", location: "San Isidro/Lince", m3u8: "https://live.smartechlatam.online/claro/javierprado/index.m3u8" },
   { slug: "angamos", name: "Av. Angamos Oeste", location: "Miraflores/Surquillo", m3u8: "https://live.smartechlatam.online/claro/angamos/index.m3u8" },
   { slug: "derby", name: "Av. El Derby", location: "Surco", m3u8: "https://live.smartechlatam.online/claro/derby/index.m3u8" },
